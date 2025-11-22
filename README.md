@@ -4,7 +4,7 @@
 
 ## About
 
-In this report we attempt to build a linear regression model using ridge regression to predict the quality of a given wine based purely on its physicochemical properties. ***comment more on actual model***
+In this report we attempt to build a linear regression model using ridge regression to predict the quality of a given wine based purely on its physicochemical properties. Our model demonstrated a root mean squared error ($RSME$) of 0.734, meaning that on average the predicted quality was 0.734 points off of the actual quality. The $R^2$ score of our model was 0.3, meaning it explained only 30% of the variance. Though interpretation of the coefficients of our linear model we were able to identify which features had the strongest positive effect on quality (residual sugar and alcohol content), as well as those with the strongest negative effect (density, volatile acidity).
 
 The dataset used in this project cotains various physicochemical (pH, citric acid content, alcohol content, etc.) and sensory data (0 - 10 score) related to vinho verde white wines from the Minho region of Portugal. It was created by Paulo Cortez, António Cerdeira, Fernando Almeida, Telmo Matos, and José Reis (1). It was sourced from the UCI Machine Learning Repository (2) and can be found [here](https://archive.ics.uci.edu/dataset/186/wine+quality).
 
@@ -39,7 +39,7 @@ Next, under the "Kernel" menu click "Restart Kernel and Run All Cells...".
 - `conda-lock` (version 2.5.7 or higher)
 - `jupyterlab` (version 4.0.0 or higher)
 - `nb_conda_kernels` (version 2.3.1 or higher)
-- Python and packages listed in [`environment.yml`](environment.yaml)
+- Python and packages listed in [`environment.yaml`](environment.yaml)
 
 ## License
 
