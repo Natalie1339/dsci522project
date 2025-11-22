@@ -1,0 +1,30 @@
+name: dsci522project
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - graphviz
+  - jinja2
+  - catboost
+  - otter-grader=6
+  - xgboost
+  - lightgbm
+  - requests[version='>=2.24.0']
+  - eli5
+  - nb_conda_kernels
+  - python[version='>=3.11,<3.13']
+  - scikit-learn
+  - spacy
+  - altair-all=5.4
+  - pip
+  - python-graphviz
+  - imbalanced-learn
+  - nltk
+  - scipy
+  - matplotlib[version='>=3.2.2']
+  - ipykernel
+  - vega_datasets
+  - shap[version='>=0.45']
+  - pandas-profiling
+  - conda-lock
+prefix: C:\Users\7luck\Miniforge3\envs\dsci573
