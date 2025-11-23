@@ -10,7 +10,7 @@ The dataset used in this project cotains various physicochemical (pH, citric aci
 
 ## Report
 
-The final report can be found [here]([white_wine_quality.pdf](https://github.com/Natalie1339/dsci522project/blob/28d13c128f5a5cee79e09125874c630ad695cbee/analysis/white_wine_quality.pdf)). 
+The final report can be found [here](https://github.com/Natalie1339/dsci522project/blob/28d13c128f5a5cee79e09125874c630ad695cbee/analysis/white_wine_quality.pdf).
 
 ## Usage
 
