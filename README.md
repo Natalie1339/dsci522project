@@ -39,11 +39,11 @@ Next, under the "Kernel" menu click "Restart Kernel and Run All Cells...".
 - `conda-lock` (version 2.5.7 or higher)
 - `jupyterlab` (version 4.0.0 or higher)
 - `nb_conda_kernels` (version 2.3.1 or higher)
-- Python and packages listed in [`environment.yaml`](environment.yaml)
+- Python and packages listed in [`environment.yaml`](https://github.com/Natalie1339/dsci522project/blob/28d13c128f5a5cee79e09125874c630ad695cbee/environment.yml)
 
 ## License
 
-If re-using/re-mixing please provide attribution and link to this webpage. The software code contained within this repository is licensed under the MIT license. See [the license file](LICENSE.md) for more information.
+If re-using/re-mixing please provide attribution and link to this webpage. The software code contained within this repository is licensed under the MIT license. See [the license file](https://github.com/Natalie1339/dsci522project/blob/28d13c128f5a5cee79e09125874c630ad695cbee/LICENSE) for more information.
 
 ## References
 
