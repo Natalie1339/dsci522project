@@ -14,24 +14,15 @@ The final report can be found [here](https://github.com/Natalie1339/dsci522proje
 
 ## Usage
 
-First time running the project,
-run the following from the root of this repository:
+1. Using the command line, navigate to the root of this project and enter the following command:
+```docker compose up```
+The terminal should output a url starting with `http://127.0.0.1:8888/lab?token=`. Open the URL in your browser.
 
-    ``` bash
-    conda-lock install --name 
-    wine-quality-predictor conda-lock.yml
-    ```
+2. Open `notebooks/white_wine_quality.ipynb` in Jupyter Lab and under Switch/Select Kernel choose "Python [conda env:wine-quality-predictor]".
 
-To run the analysis,
-run the following from the root of this repository:
+3. Next, under the "Kernel" menu click "Restart Kernel and Run All Cells...".
 
-    ``` bash
-    jupyter lab 
-    ```
-
-Open `notebooks/white_wine_quality.ipynb` in Jupyter Lab and under Switch/Select Kernel choose "Python [conda env:wine-quality-predictor]".
-
-Next, under the "Kernel" menu click "Restart Kernel and Run All Cells...".
+4. To shut down the container, use `ctrl + c` in the terminal and enter `docker compose rm`.
 
 ## Dependencies
 
