@@ -20,5 +20,5 @@ RUN /opt/conda/envs/dsci522project/bin/python -m ipykernel install --user --name
 EXPOSE 8888
 
 # Start JupyterLab from the dsci522project environment
-CMD ["bash", "-c", "source /opt/conda/etc/profile.d/conda.sh && conda activate dsci522project && jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --ServerApp.token= --ServerApp.password="]
+CMD ["bash", "-c", "source /opt/conda/etc/profile.d/conda.sh && conda activate dsci522project && jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root"]
 
