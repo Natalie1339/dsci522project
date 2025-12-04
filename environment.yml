@@ -20,6 +20,7 @@ dependencies:
   - ipykernel
   - nb_conda_kernels
   - pip
+  - polars
   - pip:
       - altair-ally
       - pointblank
