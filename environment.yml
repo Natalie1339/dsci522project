@@ -24,4 +24,6 @@ dependencies:
       - altair-ally
       - pointblank
       - deepchecks
+      - click==8.2.1
+      - ucimlrepo==0.0.7
 
