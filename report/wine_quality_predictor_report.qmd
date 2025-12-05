@@ -1,0 +1,34 @@
+---
+title: "Predicting wine quality based on physicochemical attributes"
+author: "Zhihao Xie, Natalie Trusdell, Oswin Gan & Sam Lokanc"
+date: "2025/12/06"
+jupyter: python3
+format: 
+    html:
+        toc: true
+        toc-depth: 2
+    pdf:
+        toc: true
+        toc-depth: 2
+bibliography: references.bib
+execute:
+  echo: false
+  warning: false
+editor: source
+---
+
+# Introduction
+
+Quality assessment is an essential step in the wine making process as it helps ensure consistency and consumer satisfaction. The quality of wine has historically been evaluated by wine makers and sommeliers, who leverage their training and expertise to determine if a product meets acceptable standards @langstaff2010sensory. While there have been advancements in the detection of the physicochemical properties of wine and how they relate to flavour @polavskova2008wine, quality assessment remains a subjective metric.
+
+Here we ask if wine quality can be predicted using machine learning. Our focus is to create an interpretable linear regression model trained on physicochemical wine data to perform this task. The utility of such a model is two-fold as it can be used as a tool to help less experienced wine makers and sommeliers get a sense of the quality of a given wine. Furthermore, the model would help to provide a more objective framework for wine assessment through interpretation of its coefficients. To achieve this, we will train our model on data related to vinho verde white wines from the Minho region of Portugal which contains the physicochemical and sensory data of 4898 wines @cortez2009modeling.
+
+# Methods
+
+## Data
+
+## Analysis
+
+# Results and Discussion
+
+# References

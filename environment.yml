@@ -21,6 +21,7 @@ dependencies:
   - nb_conda_kernels
   - pip
   - polars
+  - quarto=1.8.26
   - pip:
       - altair-ally
       - pointblank
