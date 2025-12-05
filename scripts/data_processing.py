@@ -15,10 +15,10 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import RidgeCV
 
 @click.command()
-@click.option('--raw-data', type=str, help="Path to raw data")
-@click.option('--data-to', type=str, help="Path to directory where processed data is written to")
-@click.option('--preprocessor-to', type=str, help="Path to directory where preprocessor object is written to")
-@click.option('--seed', type=int, help="Random seed for reproducibility", default=123)
+@click.option('--raw-data', type=str)
+@click.option('--data-to', type=str)
+@click.option('--preprocessor-to')
+@click.option('--seed', type=int, default=123)
 
 def main(raw_data, data_to, preprocessor_to, seed):
     np.random.seed(seed)
@@ -73,7 +73,7 @@ def main(raw_data, data_to, preprocessor_to, seed):
     train_df, test_df = train_test_split(
         origin_df,
         test_size=0.25,
-        random_state=42,
+        random_state=seed,
         stratify=origin_df["quality"]
     )
 
