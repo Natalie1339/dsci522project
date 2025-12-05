@@ -24,34 +24,34 @@ def main(raw_data, data_to, preprocessor_to, seed):
     np.random.seed(seed)
     set_config(transform_output="pandas")
 
-    expected_cols = ['fixed acidity',
-                     'volatile acidity',
-                     'citric acid',
-                     'residual sugar',
+    expected_cols = ['fixed_acidity',
+                     'volatile_acidity',
+                     'citric_acid',
+                     'residual_sugar',
                      'chlorides',
-                     'free sulfur dioxide',
-                     'total sulfur dioxide',
+                     'free_sulfur_dioxide',
+                     'total_sulfur_dioxide',
                      'density',
                      'pH',
                      'sulphates',
                      'alcohol',
                      'quality']
   
-    origin_df = pd.read_csv(raw_data, sep=';', encoding='utf-8')
+    origin_df = pd.read_csv(raw_data, sep=',', encoding='utf-8')
 
-    schema = pb.Schema(columns=[('fixed acidity', 'float64'),
-                                ('volatile acidity', 'float64'),
-                                ('citric acid', 'float64'),
-                                ('residual sugar', 'float64'),
+    schema = pb.Schema(columns=[('fixed_acidity', 'float64'),
+                                ('volatile_acidity', 'float64'),
+                                ('citric_acid', 'float64'),
+                                ('residual_sugar', 'float64'),
                                 ('chlorides', 'float64'),
-                                ('free sulfur dioxide', 'float64'),
-                                ('total sulfur dioxide', 'float64'),
+                                ('free_sulfur_dioxide', 'float64'),
+                                ('total_sulfur_dioxide', 'float64'),
                                 ('density', 'float64'),
                                 ('pH', 'float64'),
                                 ('sulphates', 'float64'),
                                 ('alcohol', 'float64'),
                                 ('quality', 'int64')])
- 
+
     (pb.Validate(origin_df)
      .col_exists(columns=expected_cols)
      .col_vals_not_null(columns=expected_cols, thresholds=0.0)
