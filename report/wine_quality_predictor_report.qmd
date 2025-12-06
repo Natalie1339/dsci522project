@@ -27,6 +27,37 @@ Here we ask if wine quality can be predicted using machine learning. Our focus i
 
 ## Data
 
+The data was obtained from the UC Irvine Machine Learning Repository @Dua2019. The dataset contains physicochemical and sensory data related to 4898 white wines @cortez2009modeling. The physicochemical data include: fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, alcohol, and sulfates. These physicochemical data are emperically measured and will be used as features for our predictive model. The sensory data contained in the data set refers to the quality of the wine, which was subjectively measured by wine experts and represented as a score out of ten. This will be the target of our predictive model.
+
+The distributions of the features can be seen in @fig-feature-dist. By taking a look at the individual distributions of the variables, we can see that the majority of them are approximately normal with some degree of right-skew. This tells us that most of the values tend to cluster around the average, possibly an industry standard, with the more extreme values tending to fall above the average rather than below it. The distributions of residual sugar and alcohol content break this pattern as the residual sugar plot follows a more exponential pattern, and the distribution of alcohol content is still approximately normal but also shows a tendency towards uniformity.
+
+::: {#fig-feature-dist layout-ncol=3}
+
+![Fixed Acidity](../results/figures/feature_fixed_acidity_dist.png){#fig-fixed-acidity}
+
+![Volatile Acidity](../results/figures/feature_volatile_acidity_dist.png){#fig-volatile-acidity}
+
+![Citric Acid](../results/figures/feature_citric_acid_dist.png){#fig-citric-acid}
+
+![Residual Sugar](../results/figures/feature_residual_sugar_dist.png){#fig-residual-sugar}
+
+![Chlorides](../results/figures/feature_chlorides_dist.png){#fig-chlorides}
+
+![Free Sulfur Dioxide](../results/figures/feature_free_sulfur_dioxide_dist.png){#fig-free-SO2}
+
+![Total Sulfur Dioxide](../results/figures/feature_total_sulfur_dioxide_dist.png){#fig-total-SO2}
+
+![Density](../results/figures/feature_density_dist.png){#fig-density}
+
+![pH](../results/figures/feature_pH_dist.png){#fig-ph}
+
+![Alcohol](../results/figures/feature_alcohol_dist.png){#fig-alcohol}
+
+![Sulphates](../results/figures/feature_sulphates_dist.png){#fig-sulphates}
+
+Physicochemical Feature Distributions
+:::
+
 ## Analysis
 
 # Results and Discussion

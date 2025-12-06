@@ -122,6 +122,157 @@ div.csl-indent {
 <h1>Methods</h1>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>The data was obtained from the UC Irvine Machine Learning Repository <span class="citation" data-cites="Dua2019">Dua and Graff (<a href="#ref-Dua2019" role="doc-biblioref">2017</a>)</span>. The dataset contains physicochemical and sensory data related to 4898 white wines <span class="citation" data-cites="cortez2009modeling">Cortez et al. (<a href="#ref-cortez2009modeling" role="doc-biblioref">2009</a>)</span>. The physicochemical data include: fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, alcohol, and sulfates. These physicochemical data are emperically measured and will be used as features for our predictive model. The sensory data contained in the data set refers to the quality of the wine, which was subjectively measured by wine experts and represented as a score out of ten. This will be the target of our predictive model.</p>
+<p>The distributions of the features can be seen in <a href="#fig-feature-dist" class="quarto-xref">Figure&nbsp;1</a>. By taking a look at the individual distributions of the variables, we can see that the majority of them are approximately normal with some degree of right-skew. This tells us that most of the values tend to cluster around the average, possibly an industry standard, with the more extreme values tending to fall above the average rather than below it. The distributions of residual sugar and alcohol content break this pattern as the residual sugar plot follows a more exponential pattern, and the distribution of alcohol content is still approximately normal but also shows a tendency towards uniformity.</p>
+<div id="fig-feature-dist" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-feature-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-fixed-acidity" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-fixed-acidity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../results/figures/feature_fixed_acidity_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-fixed-acidity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Fixed Acidity
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-volatile-acidity" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-volatile-acidity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../results/figures/feature_volatile_acidity_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-volatile-acidity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Volatile Acidity
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-citric-acid" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-citric-acid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../results/figures/feature_citric_acid_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-citric-acid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) Citric Acid
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-residual-sugar" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-residual-sugar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../results/figures/feature_residual_sugar_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-residual-sugar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d) Residual Sugar
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-chlorides" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-chlorides-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../results/figures/feature_chlorides_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-chlorides-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(e) Chlorides
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-free-SO2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-free-SO2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../results/figures/feature_free_sulfur_dioxide_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-free-SO2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(f) Free Sulfur Dioxide
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-total-SO2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-total-SO2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../results/figures/feature_total_sulfur_dioxide_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-total-SO2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(g) Total Sulfur Dioxide
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-density" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../results/figures/feature_density_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(h) Density
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-ph" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-ph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../results/figures/feature_pH_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(i) pH
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-alcohol" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-alcohol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../results/figures/feature_alcohol_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-alcohol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(j) Alcohol
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-sulphates" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sulphates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../results/figures/feature_sulphates_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sulphates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(k) Sulphates
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-feature-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Physicochemical Feature Distributions
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="analysis" class="level2">
 <h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
@@ -138,6 +289,9 @@ div.csl-indent {
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-cortez2009modeling" class="csl-entry" role="listitem">
 Cortez, Paulo, António Cerdeira, Fernando Almeida, Telmo Matos, and José Reis. 2009. <span>“Modeling Wine Preferences by Data Mining from Physicochemical Properties.”</span> <em>Decision Support Systems</em> 47 (4): 547–53.
+</div>
+<div id="ref-Dua2019" class="csl-entry" role="listitem">
+Dua, Dheeru, and Casey Graff. 2017. <span>“<span>UCI</span> Machine Learning Repository.”</span> University of California, Irvine, School of Information; Computer Sciences. <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>.
 </div>
 <div id="ref-langstaff2010sensory" class="csl-entry" role="listitem">
 Langstaff, SA. 2010. <span>“Sensory Quality Control in the Wine Industry.”</span> In <em>Sensory Analysis for Food and Beverage Quality Control</em>, 236–61. Elsevier.
