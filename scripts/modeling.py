@@ -1,0 +1,115 @@
+import click
+import os
+import pickle
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import statsmodels.formula.api as smf
+from sklearn import set_config
+from sklearn.metrics import root_mean_squared_error, r2_score, mean_squared_error, mean_absolute_error
+
+
+@click.command()
+@click.option('--model-from', type = str)
+@click.option('--data-from', type = str)
+@click.option('--figures-to', type=str)
+@click.option('--tables-to', type=str)
+
+def main(model_from, data_from, results_to, figures_to, tables_to):
+    set_config(transform_output="pandas")
+
+    # read in the data
+    train_df = pd.read_csv(os.path.join(data_from, "train_df.csv"))
+    test_df = pd.read_csv(os.path.join(data_from, "test_df.csv"))
+    X_train = pd.read_csv(os.path.join(data_from, "X_train.csv"))
+    y_train = pd.read_csv(os.path.join(data_from, "y_train.csv")).squeeze()
+    X_test = pd.read_csv(os.path.join(data_from, "X_test.csv"))
+    y_test = pd.read_csv(os.path.join(data_from, "y_test.csv")).squeeze()
+    
+    # OLS model
+    predictor_cols = [col for col in train_df.columns if col != 'quality']
+    formula = "quality ~ " + " + ".join(predictor_cols)
+    model_ols = smf.ols(formula, data=train_df)
+    results = model_ols.fit()
+    with open(os.path.join(figures_to, "ols_summary.html"), "w") as f:
+        f.write(results.summary().as_html())
+ 
+    # Saving metrics to refer to in qmd   
+    ols_r_square = results.rsquared
+    ols_metrics = pd.DataFrame({
+        'Metric': ['R²'],
+        'Value': [ols_r_square]
+    })
+    ols_metrics.to_csv(os.path.join(tables_to, "ols_metrics.csv"), index=False)
+
+    # open model from data_processing script
+    model_path = os.path.join(model_from, "model.pickle")
+    with open(model_path, "rb") as f:
+        model = pickle.load(f)
+    # fit the model
+    model.fit(X_train, y_train)
+    # use the model to predict on the testing data
+    y_pred = model.predict(X_test)
+    
+    # Calculate metrics
+    summary = pd.DataFrame({
+        'Metric': ['RMSE', 'MAE', 'R²', 'Mean Actual', 'Mean Predicted'],
+        'Value': [
+            np.sqrt(mean_squared_error(y_test, y_pred)),
+            mean_absolute_error(y_test, y_pred),
+            r2_score(y_test, y_pred),
+            y_test.mean(),
+            y_pred.mean()
+        ]
+    })
+    # Round for cleaner display
+    summary['Value'] = summary['Value'].round(4)
+    print(summary.to_string(index=False))
+    # save ridge metrics
+    summary.to_csv(os.path.join(tables_to, "ridge_metrics.csv"), index=False)
+
+    # get coefficients for each feature
+    linreg = model.named_steps["regressor"]
+    coef_df = pd.DataFrame(
+        {"feature": X_train.columns, "coefficient": linreg.coef_}
+    ).sort_values("coefficient", ascending=False)
+    coef_df['coefficient'] = coef_df['coefficient'].round(4)
+    coef_df.to_csv(os.path.join(tables_to, "ridge_coefficients.csv"), index=False)
+
+    # Actual versus Predicted Quality Scatter Plot
+    plt.figure(figsize=(6,6))
+    plt.scatter(y_test, y_pred, alpha=0.4)
+    plt.plot([y_test.min(), y_test.max()],
+            [y_test.min(), y_test.max()],
+            linewidth=2, color='red')
+    plt.xlabel("Actual Quality")
+    plt.ylabel("Predicted Quality")
+    plt.title("Actual vs Predicted Quality")
+    plt.savefig(os.path.join(figures_to, "Actual_vs_Predicted_scatter.png"))
+    plt.close()
+
+    # Residual Plot
+    residuals = y_test - y_pred
+    plt.figure(figsize=(7,5))
+    plt.scatter(y_pred, residuals, alpha=0.4)
+    plt.axhline(0, color="red", linestyle="--")
+    plt.xlabel("Predicted Quality")
+    plt.ylabel("Residual (Actual - Predicted)")
+    plt.title("Residual Plot")
+    plt.savefig(os.path.join(figures_to, "Residual_plot.png"))
+    plt.close()
+
+    # Actual versus Predicted Quality boxplot
+    df_viz = pd.DataFrame({
+        "Actual Quality": y_test,
+        "Predicted Quality": y_pred
+    })
+    plt.figure(figsize=(8,5))
+    sns.boxplot(x="Actual Quality", y="Predicted Quality", data=df_viz)
+    plt.title("Actual vs Predicted Quality")
+    plt.savefig(os.path.join(figures_to, "Actual_vs_Predicted_boxplot.png"))
+    plt.close()
+
+if __name__ == '__main__':
+    main()
