@@ -4,7 +4,7 @@ import click
 from ucimlrepo import fetch_ucirepo 
 
 @click.command()
-@click.option('--write-to', type=str)
+@click.option('--write-to', default='data/raw', help='Directory for data to be downloaded to')
 def main(write_to):
     wine_quality = fetch_ucirepo(id=186) 
 
