@@ -15,9 +15,9 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import RidgeCV
 
 @click.command()
-@click.option('--raw-data', type=str)
-@click.option('--data-to', type=str)
-@click.option('--preprocessor-to')
+@click.option('--raw-data', default="data/raw", help="Directory containing raw data")
+@click.option('--data-to', default="data/processed", help="Directory to place processed data in")
+@click.option('--preprocessor-to', default="results/models", help="Directory to output preprocessor to")
 @click.option('--seed', type=int, default=123)
 
 def main(raw_data, data_to, preprocessor_to, seed):
