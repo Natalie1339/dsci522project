@@ -4,8 +4,8 @@ services:
     ports:
       - "8888:8888"
     volumes:
-     - ./:/jovyan
-    working_dir: /jovyan
+     - ./:/workplace
+    working_dir: /workplace
     deploy:
       resources:
         limits:

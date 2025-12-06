@@ -19,6 +19,12 @@ RUN /opt/conda/envs/dsci522project/bin/python -m ipykernel install --user --name
 # Expose JupyterLab port
 EXPOSE 8888
 
+# Make dsci522project the default environment
+RUN echo "conda activate dsci522project" >> ~/.bashrc
+
+# Set environment variables so the environment is active by default
+ENV PATH /opt/conda/envs/dsci522project/bin:$PATH
+
 # Start JupyterLab from the dsci522project environment
 CMD ["bash", "-c", "source /opt/conda/etc/profile.d/conda.sh && conda activate dsci522project && jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root"]
 
