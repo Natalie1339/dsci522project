@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import statsmodels.formula.api as smf
 from sklearn import set_config
-from sklearn.metrics import root_mean_squared_error, r2_score, mean_squared_error, mean_absolute_error
+from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 
 
 @click.command()
