@@ -3,7 +3,7 @@ import click
 from ucimlrepo import fetch_ucirepo 
 
 @click.command()
-@click.argument('path', type=str)
+@click.option('--path', type=str)
 def main(path):
     wine_quality = fetch_ucirepo(id=186) 
 
