@@ -60,6 +60,55 @@ Physicochemical Feature Distributions
 
 ## Analysis
 
+```{python}
+#| echo: false
+import pandas as pd
+
+with open("../results/tables/ols_metrics.csv", "r") as f:
+    results = pd.read_csv(f)
+
+    r2_ols = results['r2_ols']
+```
+
+For exploratory purposes, we first create an ordinary least squares linear regression model including all predictors:
+
+![OLS Regression Results](../results/figures/ols_model_summary.html){#fig-ols-results}
+
+This model (@fig-ols-results) has an R-squared value of `{python} f"{r2_ols:.3f}"`, meaning that the model explains roughly `{python} f"{r2_ols:.1%}"` of variability in the data. The R-squared value is close to that of the adjusted R-squared, suggesting most predictors contribute explanatory power to the model. The p-value of the F-statistics is small, indicating that at least one predictor has a statistically significant assocation with the response. The output reveals that the condition number of the model is large, possibly indicating strong multicollinearity. Thus, we will opt for a Ridge Regression to induce an L2 penalty on correlated variables.
+
+::: {#tbl-ridge-results layout-ncol=2}
+```{python}
+#| echo: false
+#| label: tbl-coefficients
+#| tbl-cap: "Ridge Features and Coefficients"
+import pandas as pd
+coef = pd.read_csv("../results/tables/ridge_coefficients.csv")
+print(coef.to_markdown(index=False))
+```
+```{python}
+#| echo: false
+#| label: tbl-metrics
+#| tbl-cap: "Ridge Regression Results"
+import pandas as pd
+metrics = pd.read_csv("../results/tables/ridge_metrics.csv")
+print(metrics.to_markdown(index=False))
+```
+
+Ridge Regression Analysis Results
+:::
+
 # Results and Discussion
+::: {#fig-feature-dist layout-ncol=2}
+
+![Scatterplot of Actual versus Predicted Quality Scores]("../results/figures/Actual_vs_Predicted_scatter.png){#fig-scatter}
+
+![Barplot of Actual versus Predicted Quality Scores]("../results/figures/Actual_vs_Predicted_boxplot.png){#fig-boxplot}
+
+:::
+When we look at the plot for actual versus predicted quality (@fig-scatter), we can see that our model had a tendency to predict the middling quality ratings, suggesting the model was biased by the high frequency of quality ratings of 5-7 in our data. While our ridge regression model did tend to predict higher quality values when the actual quality value was higher, the average prediction stayed between ~5 and 6.5 for all actual quality values.
+
+After running our ridge regression analysis, the variables that the model found most informative for predicting the quality rating were the residual sugar and alcohol content (@tbl-ridge-results), with a higher value of either being correlated on average with a higher predicted quality rating. Intuitively this makes sense, as wines with a higher alcohol content are considered to have more body and a richer taste, but there is also a tradeoff between alcohol content and residual sugar (@copestake2025alcohol). The tradeoff was hinted at in our earlier EDA, as a higher alcohol content was associated with a lower residual sugar content. The alcohol content in wines is derived from a longer fermentation process, but this fermentation also consumes more of the sugar, so it's difficult to attain high levels of both.
+
+These findings indicate that although taste is subjective, tasters have a tendency to prefer white wines that maximize the residual sugar and alcohol content, resulting in a full-bodied wine that is not too dry. Going forward, this could prompt winemakers to experiment with grapes with a higher sugar content and fermentation techniques that try to maximize the alcohol content while minimizing the sugar consumed during the process. This also leads us to questions about how aware sommeliers are of their preferences while judging the quality of wine and how closely the quality rating matches the average wine consumer's preferences. Do sommeliers just tend to enjoy sweeter, full-bodied wines, or is that their personal opinion due to their experience? More research could be done into this topic.
 
 # References
