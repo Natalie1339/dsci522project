@@ -5,8 +5,8 @@ import pandas as pd
 import os
 
 @click.command()
-@click.option('--input-x-train-path', type=str)
-@click.option('--output-feature-dist-img-path', type=str)
+@click.option('--input-x-train-path', default='data/processed/X_train.csv', help='Path to X_train CSV file')
+@click.option('--output-feature-dist-img-path', default='results/figures', help='Directory to save distribution plots')
 # plotting a bar graph for each variable
 def EDA(input_x_train_path, output_feature_dist_img_path):
     X_train=pd.read_csv(input_x_train_path)

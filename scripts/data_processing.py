@@ -15,9 +15,9 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import RidgeCV
 
 @click.command()
-@click.option('--raw-data', type=str)
-@click.option('--data-to', type=str)
-@click.option('--preprocessor-to')
+@click.option('--raw-data', default="data/raw", help="Directory containing raw data")
+@click.option('--data-to', default="data/processed", help="Directory to place processed data in")
+@click.option('--preprocessor-to', default="results/models", help="Directory to output preprocessor to")
 @click.option('--seed', type=int, default=123)
 
 def main(raw_data, data_to, preprocessor_to, seed):
@@ -37,7 +37,7 @@ def main(raw_data, data_to, preprocessor_to, seed):
                      'alcohol',
                      'quality']
   
-    origin_df = pd.read_csv(raw_data, sep=',', encoding='utf-8')
+    origin_df = pd.read_csv(os.path.join(raw_data, "winequality-white.csv"), sep=',', encoding='utf-8',index_col=0).drop(columns=['color'])
 
     schema = pb.Schema(columns=[('fixed_acidity', 'float64'),
                                 ('volatile_acidity', 'float64'),

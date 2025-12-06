@@ -7,16 +7,16 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import statsmodels.formula.api as smf
 from sklearn import set_config
-from sklearn.metrics import root_mean_squared_error, r2_score, mean_squared_error, mean_absolute_error
+from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 
 
 @click.command()
-@click.option('--model-from', type = str)
-@click.option('--data-from', type = str)
-@click.option('--figures-to', type=str)
-@click.option('--tables-to', type=str)
+@click.option('--model-from', default="results/models", help="Directory containing preprocessor")
+@click.option('--data-from', default="data/processed", help="Directory containing processed data")
+@click.option('--figures-to', default="results/figures", help="Directory to output figures to")
+@click.option('--tables-to', default="results/tables", help="Directory to output tables to")
 
-def main(model_from, data_from, results_to, figures_to, tables_to):
+def main(model_from, data_from, figures_to, tables_to):
     set_config(transform_output="pandas")
 
     # read in the data
