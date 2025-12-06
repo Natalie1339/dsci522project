@@ -2,3 +2,4 @@
 .jupyter/
 .local/
 .npm/
+.ipynb_checkpoints/
