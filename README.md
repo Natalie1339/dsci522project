@@ -8,7 +8,7 @@ In this project, we ask if we can use a machine learning model to predict wine q
 
 ## Report
 
-The final report can be found [here](https://github.com/Natalie1339/dsci522project/blob/main/report/wine_quality_predictor_report.html).
+The final report can be found [on our GitHub repository](https://github.com/Natalie1339/dsci522project/blob/main/report/wine_quality_predictor_report.html).
 
 ## Usage
 
