@@ -4,14 +4,14 @@ results:
 	mkdir -p results
 
 results/winequality-white.csv: scripts/data_download.py | results
-	python scripts/data_download.py --write-to=results/
+	python scripts/data_download.py
 
 results/X_train.csv: scripts/data_processing.py results/winequality-white.csv
 	python scripts/data_processing.py --raw-data=results/ --data-to=results/
 
 results/figures/: scripts/EDA.py results/X_train.csv
 	mkdir -p results/figures/
-	python scripts/EDA.py --input-x-train-path=results/X_train.csv --output-feature-dist-img-path=results/figures/
+	python scripts/EDA.py
 
 results/tables/: scripts/modeling.py results/train_df.csv results/test_df.csv
 	mkdir -p results/tables/
