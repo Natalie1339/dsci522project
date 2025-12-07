@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<head>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta charset="utf-8" />
+<meta name="generator" content="quarto-1.8.23" />
 
-<meta name="author" content="Zhihao Xie, Natalie Trusdell, Oswin Gan &amp; Sam Lokanc">
-<meta name="dcterms.date" content="2025-12-06">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+<meta name="author" content="Zhihao Xie, Natalie Trusdell, Oswin Gan &amp; Sam Lokanc" />
+<meta name="dcterms.date" content="2025-12-06" />
 
 <title>Predicting wine quality based on physicochemical attributes</title>
 <style>
@@ -44,41 +46,16 @@ div.csl-indent {
   margin-left: 2em;
 }</style>
 
-
-<script src="wine_quality_predictor_report_files/libs/clipboard/clipboard.min.js"></script>
-<script src="wine_quality_predictor_report_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="wine_quality_predictor_report_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="wine_quality_predictor_report_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="wine_quality_predictor_report_files/libs/quarto-html/popper.min.js"></script>
-<script src="wine_quality_predictor_report_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="wine_quality_predictor_report_files/libs/quarto-html/anchor.min.js"></script>
-<link href="wine_quality_predictor_report_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="wine_quality_predictor_report_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="wine_quality_predictor_report_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="wine_quality_predictor_report_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="wine_quality_predictor_report_files/libs/bootstrap/bootstrap-1e118674f8eeaf0dc11d6faf9a2d8791.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<!-- htmldependencies:E3FAD763 -->
 
 
 </head>
 
-<body class="quarto-light">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul class="collapse">
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
-  <ul class="collapse">
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
-  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
-  </ul></li>
-  <li><a href="#results-and-discussion" id="toc-results-and-discussion" class="nav-link" data-scroll-target="#results-and-discussion">Results and Discussion</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="../wine_quality_predictor_report.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+  <div id="quarto-toc-target"></div>
 </div>
 <main class="content" id="quarto-document-content">
 
@@ -112,7 +89,20 @@ div.csl-indent {
 
 </header>
 
-
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction">Introduction</a></li>
+  <li><a href="#methods" id="toc-methods">Methods</a>
+  <ul>
+  <li><a href="#data" id="toc-data">Data</a></li>
+  <li><a href="#analysis" id="toc-analysis">Analysis</a></li>
+  </ul></li>
+  <li><a href="#results-and-discussion" id="toc-results-and-discussion">Results and Discussion</a></li>
+  <li><a href="#references" id="toc-references">References</a></li>
+  </ul>
+</nav>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>Quality assessment is an essential step in the wine making process as it helps ensure consistency and consumer satisfaction. The quality of wine has historically been evaluated by wine makers and sommeliers, who leverage their training and expertise to determine if a product meets acceptable standards <span class="citation" data-cites="langstaff2010sensory">Langstaff (<a href="#ref-langstaff2010sensory" role="doc-biblioref">2010</a>)</span>. While there have been advancements in the detection of the physicochemical properties of wine and how they relate to flavour <span class="citation" data-cites="polavskova2008wine">Polášková, Herszage, and Ebeler (<a href="#ref-polavskova2008wine" role="doc-biblioref">2008</a>)</span>, quality assessment remains a subjective metric.</p>
@@ -121,18 +111,18 @@ div.csl-indent {
 <section id="methods" class="level1">
 <h1>Methods</h1>
 <section id="data" class="level2">
-<h2 class="anchored" data-anchor-id="data">Data</h2>
+<h2>Data</h2>
 <p>The data was obtained from the UC Irvine Machine Learning Repository <span class="citation" data-cites="Dua2019">Dua and Graff (<a href="#ref-Dua2019" role="doc-biblioref">2017</a>)</span>. The dataset contains physicochemical and sensory data related to 4898 white wines <span class="citation" data-cites="cortez2009modeling">Cortez et al. (<a href="#ref-cortez2009modeling" role="doc-biblioref">2009</a>)</span>. The physicochemical data include: fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, alcohol, and sulfates. These physicochemical data are emperically measured and will be used as features for our predictive model. The sensory data contained in the data set refers to the quality of the wine, which was subjectively measured by wine experts and represented as a score out of ten. This will be the target of our predictive model.</p>
-<p>The distributions of the features can be seen in <a href="#fig-feature-dist" class="quarto-xref">Figure&nbsp;1</a>. By taking a look at the individual distributions of the variables, we can see that the majority of them are approximately normal with some degree of right-skew. This tells us that most of the values tend to cluster around the average, possibly an industry standard, with the more extreme values tending to fall above the average rather than below it. The distributions of residual sugar and alcohol content break this pattern as the residual sugar plot follows a more exponential pattern, and the distribution of alcohol content is still approximately normal but also shows a tendency towards uniformity.</p>
+<p>The distributions of the features can be seen in <a href="#fig-feature-dist" class="quarto-xref">Figure 3</a>. By taking a look at the individual distributions of the variables, we can see that the majority of them are approximately normal with some degree of right-skew. This tells us that most of the values tend to cluster around the average, possibly an industry standard, with the more extreme values tending to fall above the average rather than below it. The distributions of residual sugar and alcohol content break this pattern as the residual sugar plot follows a more exponential pattern, and the distribution of alcohol content is still approximately normal but also shows a tendency towards uniformity.</p>
 <div id="fig-feature-dist" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
+<figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-feature-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div id="fig-fixed-acidity" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
+<div id="fig-fixed-acidity" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-subfloat-fig">
 <div aria-describedby="fig-fixed-acidity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../results/figures/feature_fixed_acidity_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+<img src="../results/figures/feature_fixed_acidity_dist.png" class="img-fluid" data-ref-parent="fig-feature-dist" />
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-fixed-acidity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Fixed Acidity
@@ -141,10 +131,10 @@ div.csl-indent {
 </div>
 </div>
 <div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div id="fig-volatile-acidity" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
+<div id="fig-volatile-acidity" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-subfloat-fig">
 <div aria-describedby="fig-volatile-acidity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../results/figures/feature_volatile_acidity_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+<img src="../results/figures/feature_volatile_acidity_dist.png" class="img-fluid" data-ref-parent="fig-feature-dist" />
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-volatile-acidity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) Volatile Acidity
@@ -153,10 +143,10 @@ div.csl-indent {
 </div>
 </div>
 <div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div id="fig-citric-acid" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
+<div id="fig-citric-acid" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-subfloat-fig">
 <div aria-describedby="fig-citric-acid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../results/figures/feature_citric_acid_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+<img src="../results/figures/feature_citric_acid_dist.png" class="img-fluid" data-ref-parent="fig-feature-dist" />
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-citric-acid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (c) Citric Acid
@@ -167,10 +157,10 @@ div.csl-indent {
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div id="fig-residual-sugar" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
+<div id="fig-residual-sugar" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-subfloat-fig">
 <div aria-describedby="fig-residual-sugar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../results/figures/feature_residual_sugar_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+<img src="../results/figures/feature_residual_sugar_dist.png" class="img-fluid" data-ref-parent="fig-feature-dist" />
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-residual-sugar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (d) Residual Sugar
@@ -179,10 +169,10 @@ div.csl-indent {
 </div>
 </div>
 <div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div id="fig-chlorides" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
+<div id="fig-chlorides" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-subfloat-fig">
 <div aria-describedby="fig-chlorides-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../results/figures/feature_chlorides_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+<img src="../results/figures/feature_chlorides_dist.png" class="img-fluid" data-ref-parent="fig-feature-dist" />
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-chlorides-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (e) Chlorides
@@ -191,10 +181,10 @@ div.csl-indent {
 </div>
 </div>
 <div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div id="fig-free-SO2" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
+<div id="fig-free-SO2" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-subfloat-fig">
 <div aria-describedby="fig-free-SO2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../results/figures/feature_free_sulfur_dioxide_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+<img src="../results/figures/feature_free_sulfur_dioxide_dist.png" class="img-fluid" data-ref-parent="fig-feature-dist" />
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-free-SO2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (f) Free Sulfur Dioxide
@@ -205,10 +195,10 @@ div.csl-indent {
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div id="fig-total-SO2" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
+<div id="fig-total-SO2" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-subfloat-fig">
 <div aria-describedby="fig-total-SO2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../results/figures/feature_total_sulfur_dioxide_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+<img src="../results/figures/feature_total_sulfur_dioxide_dist.png" class="img-fluid" data-ref-parent="fig-feature-dist" />
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-total-SO2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (g) Total Sulfur Dioxide
@@ -217,10 +207,10 @@ div.csl-indent {
 </div>
 </div>
 <div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div id="fig-density" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
+<div id="fig-density" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-subfloat-fig">
 <div aria-describedby="fig-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../results/figures/feature_density_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+<img src="../results/figures/feature_density_dist.png" class="img-fluid" data-ref-parent="fig-feature-dist" />
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (h) Density
@@ -229,10 +219,10 @@ div.csl-indent {
 </div>
 </div>
 <div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div id="fig-ph" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
+<div id="fig-ph" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-subfloat-fig">
 <div aria-describedby="fig-ph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../results/figures/feature_pH_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+<img src="../results/figures/feature_pH_dist.png" class="img-fluid" data-ref-parent="fig-feature-dist" />
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (i) pH
@@ -243,10 +233,10 @@ div.csl-indent {
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div id="fig-alcohol" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
+<div id="fig-alcohol" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-subfloat-fig">
 <div aria-describedby="fig-alcohol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../results/figures/feature_alcohol_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+<img src="../results/figures/feature_alcohol_dist.png" class="img-fluid" data-ref-parent="fig-feature-dist" />
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-alcohol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (j) Alcohol
@@ -255,10 +245,10 @@ div.csl-indent {
 </div>
 </div>
 <div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div id="fig-sulphates" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
+<div id="fig-sulphates" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-subfloat-fig">
 <div aria-describedby="fig-sulphates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../results/figures/feature_sulphates_dist.png" class="img-fluid figure-img" data-ref-parent="fig-feature-dist">
+<img src="../results/figures/feature_sulphates_dist.png" class="img-fluid" data-ref-parent="fig-feature-dist" />
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sulphates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (k) Sulphates
@@ -269,24 +259,131 @@ div.csl-indent {
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-feature-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Physicochemical Feature Distributions
+Figure 1: Physicochemical Feature Distributions
 </figcaption>
 </figure>
 </div>
 </section>
 <section id="analysis" class="level2">
-<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
+<h2>Analysis</h2>
+<p>For exploratory purposes, we first create an ordinary least squares linear regression model including all predictors:</p>
+<div id="fig-ols-results" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-ols-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="../results/tables/ols_summary.html" class="img-fluid" />
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ols-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure 2: OLS Regression Results
+</figcaption>
+</figure>
+</div>
+<p>This model (<a href="#fig-ols-results" class="quarto-xref">Figure 2</a>) has an R-squared value of 0.272, meaning that the model explains roughly 27.2% of variability in the data. The R-squared value is close to that of the adjusted R-squared, suggesting most predictors contribute explanatory power to the model. The p-value of the F-statistics is small, indicating that at least one predictor has a statistically significant assocation with the response. The output reveals that the condition number of the model is large, possibly indicating strong multicollinearity. Thus, we will opt for a Ridge Regression to induce an L2 penalty on correlated variables.</p>
+<div id="tbl-ridge-results" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-tbl">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ridge-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table 1: Ridge Regression Analysis Results
+</figcaption>
+<div aria-describedby="tbl-ridge-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-ridge-results" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="tbl-coefficients" class="cell quarto-float quarto-figure quarto-figure-center" data-execution_count="2">
+<figure class="quarto-float quarto-subfloat-tbl">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-coefficients-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Ridge Features and Coefficients
+</figcaption>
+<div aria-describedby="tbl-coefficients-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-stdout">
+<pre><code>| feature              |   coefficient |
+|:---------------------|--------------:|
+| residual_sugar       |        0.3865 |
+| alcohol              |        0.2668 |
+| pH                   |        0.0942 |
+| sulphates            |        0.0637 |
+| free_sulfur_dioxide  |        0.0547 |
+| fixed_acidity        |        0.0426 |
+| citric_acid          |        0.0048 |
+| chlorides            |        0      |
+| total_sulfur_dioxide |       -0.0137 |
+| volatile_acidity     |       -0.193  |
+| density              |       -0.3967 |</code></pre>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-ridge-results" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="tbl-metrics" class="cell quarto-float quarto-figure quarto-figure-center" data-execution_count="3">
+<figure class="quarto-float quarto-subfloat-tbl">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-metrics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Ridge Regression Results
+</figcaption>
+<div aria-describedby="tbl-metrics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-stdout">
+<pre><code>| Metric         |   Value |
+|:---------------|--------:|
+| RMSE           |  0.7357 |
+| MAE            |  0.5718 |
+| R²             |  0.309  |
+| Mean Actual    |  5.8776 |
+| Mean Predicted |  5.8667 |</code></pre>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</figure>
+</div>
 </section>
 </section>
 <section id="results-and-discussion" class="level1">
 <h1>Results and Discussion</h1>
+<div id="fig-feature-dist" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-feature-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-scatter" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-subfloat-fig">
+<div aria-describedby="fig-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../results/figures/Actual_vs_Predicted_scatter.png" class="img-fluid" data-ref-parent="fig-feature-dist" />
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Scatterplot of Actual versus Predicted Quality Scores
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-feature-dist" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-boxplot" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-subfloat-fig">
+<div aria-describedby="fig-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../results/figures/Actual_vs_Predicted_boxplot.png" class="img-fluid" data-ref-parent="fig-feature-dist" />
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Barplot of Actual versus Predicted Quality Scores
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-feature-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure 3
+</figcaption>
+</figure>
+</div>
+<p>When we look at the plot for actual versus predicted quality (<a href="#fig-scatter" class="quarto-xref">Figure 3 (a)</a>), we can see that our model had a tendency to predict the middling quality ratings, suggesting the model was biased by the high frequency of quality ratings of 5-7 in our data. While our ridge regression model did tend to predict higher quality values when the actual quality value was higher, the average prediction stayed between ~5 and 6.5 for all actual quality values.</p>
+<p>After running our ridge regression analysis, the variables that the model found most informative for predicting the quality rating were the residual sugar and alcohol content (<a href="#tbl-ridge-results" class="quarto-xref">Table 1</a>), with a higher value of either being correlated on average with a higher predicted quality rating. Intuitively this makes sense, as wines with a higher alcohol content are considered to have more body and a richer taste, but there is also a tradeoff between alcohol content and residual sugar (<span class="citation" data-cites="copestake2025alcohol">Copestake (<a href="#ref-copestake2025alcohol" role="doc-biblioref">2025</a>)</span>). The tradeoff was hinted at in our earlier EDA, as a higher alcohol content was associated with a lower residual sugar content. The alcohol content in wines is derived from a longer fermentation process, but this fermentation also consumes more of the sugar, so it’s difficult to attain high levels of both.</p>
+<p>These findings indicate that although taste is subjective, tasters have a tendency to prefer white wines that maximize the residual sugar and alcohol content, resulting in a full-bodied wine that is not too dry. Going forward, this could prompt winemakers to experiment with grapes with a higher sugar content and fermentation techniques that try to maximize the alcohol content while minimizing the sugar consumed during the process. This also leads us to questions about how aware sommeliers are of their preferences while judging the quality of wine and how closely the quality rating matches the average wine consumer’s preferences. Do sommeliers just tend to enjoy sweeter, full-bodied wines, or is that their personal opinion due to their experience? More research could be done into this topic.</p>
 </section>
 <section id="references" class="level1 unnumbered">
-
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-copestake2025alcohol" class="csl-entry" role="listitem">
+Copestake, Nicole. 2025. <span>“How Much Alcohol Is in Wine? <span>A</span> Complete Guide.”</span> Coravin. 2025. <a href="https://www.coravin.ca/blogs/community/wine-101-how-much-alcohol-is-in-wine">https://www.coravin.ca/blogs/community/wine-101-how-much-alcohol-is-in-wine</a>.
+</div>
 <div id="ref-cortez2009modeling" class="csl-entry" role="listitem">
 Cortez, Paulo, António Cerdeira, Fernando Almeida, Telmo Matos, and José Reis. 2009. <span>“Modeling Wine Preferences by Data Mining from Physicochemical Properties.”</span> <em>Decision Support Systems</em> 47 (4): 547–53.
 </div>
@@ -299,9 +396,12 @@ Langstaff, SA. 2010. <span>“Sensory Quality Control in the Wine Industry.”</
 <div id="ref-polavskova2008wine" class="csl-entry" role="listitem">
 Polášková, Pavla, Julian Herszage, and Susan E Ebeler. 2008. <span>“Wine Flavor: Chemistry in a Glass.”</span> <em>Chemical Society Reviews</em> 37 (11): 2478–89.
 </div>
-</div></section></div></main>
+</div>
+</section>
+
+</main>
 <!-- /main column -->
-<script id="quarto-html-after-body" type="application/javascript">
+<script id = "quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -703,7 +803,6 @@ Polášková, Pavla, Julian Herszage, and Susan E Ebeler. 2008. <span>“Wine Fl
   </script>
 </div> <!-- /content -->
 
+</body>
 
-
-
-</body></html>
+</html>

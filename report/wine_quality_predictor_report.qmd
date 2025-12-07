@@ -67,12 +67,12 @@ import pandas as pd
 with open("../results/tables/ols_metrics.csv", "r") as f:
     results = pd.read_csv(f)
 
-    r2_ols = results['r2_ols']
+    r2_ols = results['Value'].iloc[0]
 ```
 
 For exploratory purposes, we first create an ordinary least squares linear regression model including all predictors:
 
-![OLS Regression Results](../results/figures/ols_model_summary.html){#fig-ols-results}
+![OLS Regression Results](../results/tables/ols_summary.html){#fig-ols-results}
 
 This model (@fig-ols-results) has an R-squared value of `{python} f"{r2_ols:.3f}"`, meaning that the model explains roughly `{python} f"{r2_ols:.1%}"` of variability in the data. The R-squared value is close to that of the adjusted R-squared, suggesting most predictors contribute explanatory power to the model. The p-value of the F-statistics is small, indicating that at least one predictor has a statistically significant assocation with the response. The output reveals that the condition number of the model is large, possibly indicating strong multicollinearity. Thus, we will opt for a Ridge Regression to induce an L2 penalty on correlated variables.
 
@@ -100,9 +100,9 @@ Ridge Regression Analysis Results
 # Results and Discussion
 ::: {#fig-feature-dist layout-ncol=2}
 
-![Scatterplot of Actual versus Predicted Quality Scores]("../results/figures/Actual_vs_Predicted_scatter.png){#fig-scatter}
+![Scatterplot of Actual versus Predicted Quality Scores](../results/figures/Actual_vs_Predicted_scatter.png){#fig-scatter}
 
-![Barplot of Actual versus Predicted Quality Scores]("../results/figures/Actual_vs_Predicted_boxplot.png){#fig-boxplot}
+![Barplot of Actual versus Predicted Quality Scores](../results/figures/Actual_vs_Predicted_boxplot.png){#fig-boxplot}
 
 :::
 When we look at the plot for actual versus predicted quality (@fig-scatter), we can see that our model had a tendency to predict the middling quality ratings, suggesting the model was biased by the high frequency of quality ratings of 5-7 in our data. While our ridge regression model did tend to predict higher quality values when the actual quality value was higher, the average prediction stayed between ~5 and 6.5 for all actual quality values.
