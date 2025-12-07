@@ -7,15 +7,21 @@ results/winequality-white.csv: scripts/data_download.py | results
 	python scripts/data_download.py
 
 results/X_train.csv: scripts/data_processing.py results/winequality-white.csv
-	python scripts/data_processing.py
+	python scripts/data_processing.py --raw-data=results/ --data-to=results/
 
 results/figures/: scripts/EDA.py results/X_train.csv
 	mkdir -p results/figures/
 	python scripts/EDA.py
 
-results/tables/: scripts/modeling.py
+results/tables/: scripts/modeling.py results/train_df.csv results/test_df.csv
 	mkdir -p results/tables/
-	python scripts/modeling.py
+	python scripts/modeling.py --model-to=results/ --data-from=results/ --figures-to=results/figures/ --tables-to=results/tables/
 
 report/wine_quality_predictor_report.html: report/wine_quality_predictor_report.qmd
-	quarto render report/wine_quality_predictor_report.qmd --to html
+	quarto render report/wine_quality_predictor_report.qmd
+
+clean:
+	rm -rf results/
+	rm -f report/wine_quality_predictor_report.html
+
+.PHONY: all clean
