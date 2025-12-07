@@ -69,6 +69,9 @@ def main(raw_data, data_to, preprocessor_to, seed):
 
     pb.Validate(origin_df).col_vals_between(columns="quality", left=0, right=10).interrogate()
 
+    origin_df=origin_df.drop(origin_df.columns[0], axis=1)
+    origin_df=origin_df.drop(origin_df.columns[-1], axis=1)
+
     # split the dataset into train and test sets
     train_df, test_df = train_test_split(
         origin_df,
