@@ -7,9 +7,7 @@ format:
     html:
         toc: true
         toc-depth: 2
-    pdf:
-        toc: true
-        toc-depth: 2
+        embed-resources: true
 bibliography: references.bib
 execute:
   echo: false
@@ -74,9 +72,16 @@ with open("../results/tables/ols_metrics.csv", "r") as f:
 
 For exploratory purposes, we first create an ordinary least squares linear regression model including all predictors:
 
-![OLS Regression Results](../results/tables/ols_summary.html){#fig-ols-results}
+```{python}
+#| echo: false
+#| label: tbl-ols-results
+#| tbl-cap: "OLS Regression Metrics"
+import pandas as pd
+ols_metrics = pd.read_csv("../results/tables/ols_metrics.csv")
+print(ols_metrics.to_markdown(index=False))
+```
 
-This model (@fig-ols-results) has an R-squared value of `{python} f"{r2_ols:.3f}"`, meaning that the model explains roughly `{python} f"{r2_ols:.1%}"` of variability in the data. The R-squared value is close to that of the adjusted R-squared, suggesting most predictors contribute explanatory power to the model. The p-value of the F-statistics is small, indicating that at least one predictor has a statistically significant assocation with the response. The output reveals that the condition number of the model is large, possibly indicating strong multicollinearity. Thus, we will opt for a Ridge Regression to induce an L2 penalty on correlated variables.
+This model (@tbl-ols-results) has an R-squared value of `{python} f"{r2_ols:.3f}"`, meaning that the model explains roughly `{python} f"{r2_ols:.1%}"` of variability in the data. The R-squared value is close to that of the adjusted R-squared, suggesting most predictors contribute explanatory power to the model. The p-value of the F-statistics is small, indicating that at least one predictor has a statistically significant assocation with the response. The output reveals that the condition number of the model is large, possibly indicating strong multicollinearity. Thus, we will opt for a Ridge Regression to induce an L2 penalty on correlated variables.
 
 ::: {#tbl-ridge-results layout-ncol=2}
 ```{python}
