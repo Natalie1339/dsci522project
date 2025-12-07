@@ -55,7 +55,9 @@ The distributions of the features can be seen in @fig-feature-dist. By taking a 
 
 ![Sulphates](../results/figures/feature_sulphates_dist.png){#fig-sulphates}
 
-Physicochemical Feature Distributions
+![Correlation](../results/figures/correlation_plot.png){#fig-correlation}
+
+Physicochemical Feature Distributions and Feature Correlation
 :::
 
 ## Analysis

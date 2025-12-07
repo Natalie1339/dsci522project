@@ -9,9 +9,9 @@ results/winequality-white.csv: scripts/data_download.py | results
 results/X_train.csv: scripts/data_processing.py results/winequality-white.csv
 	python scripts/data_processing.py --raw-data=results/winequality-white.csv --data-to=results/ --preprocessor-to=results/
 
-results/figures/: scripts/EDA.py results/X_train.csv
+results/figures/: scripts/EDA.py results/X_train.csv results/train_df.csv
 	mkdir -p results/figures/
-	python scripts/EDA.py --input-x-train-path=results/X_train.csv --output-feature-dist-img-path=results/figures/
+	python scripts/EDA.py --input-x-train-path=results/X_train.csv --input-train-path=results/train_df.csv --output-feature-dist-img-path=results/figures/
 
 results/tables/: scripts/modeling.py results/model.pickle results/train_df.csv results/test_df.csv
 	mkdir -p results/tables/
