@@ -6,20 +6,19 @@
 
 In this project, we ask if we can use a machine learning model to predict wine quality from various physiochemical attributes. Our goal is to create an interpretable linear regression model trained on wine data related to vinho verde white wines from the Minho region of Portugal which contains the physicochemical and sensory data of 4898 wines (1). The utility of such a model is two-fold as it can be used as a tool to help less experienced wine makers and sommeliers get a sense of the quality of a given wine. In this report we built a linear ridge regression model trained on variables such as citric acid, residual sugar, etc. to predict the quality rating (1-10) given to a particular white wine. While our model explained only about 30% of the variation in wine quality, we were able to identify which features had the strongest positive effect on quality (residual sugar and alcohol content), as well as those with the strongest negative effect (density, volatile acidity). Based on these results, we can conclude that the physiochemical and sensory data listed in the dataset are helpful with predicting the wine quality, but since preferences regarding wine quality is so subjective, additional input from actual sommeliers might always be needed.
 
-
 ## Report
 
-The final report can be found [here](https://github.com/Natalie1339/dsci522project/blob/28d13c128f5a5cee79e09125874c630ad695cbee/analysis/white_wine_quality.pdf).
+The final report can be found [here](https://github.com/Natalie1339/dsci522project/blob/main/report/wine_quality_predictor_report.html).
 
 ## Usage
 
 1. Using the command line, navigate to the root of this project and enter the following command:
-```docker compose up```
+```docker compose up --build```
 The terminal should output a url starting with `http://127.0.0.1:8888/lab?token=`. Open the URL in your browser.
 
-2. Open `notebooks/white_wine_quality.ipynb` in Jupyter Lab and under Switch/Select Kernel choose "Python [conda env:wine-quality-predictor]".
+2. Make sure you are in the root of the directory. `pwd` should return `/workplace`.
 
-3. Next, under the "Kernel" menu click "Restart Kernel and Run All Cells...".
+3. Run the Makefile by entering `make`. You can clear previous Makefile output using `make clean`.
 
 4. To shut down the container, use `ctrl + c` in the terminal and enter `docker compose rm`.
 
