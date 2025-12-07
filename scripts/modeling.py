@@ -7,14 +7,14 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import statsmodels.formula.api as smf
 from sklearn import set_config
-from sklearn.metrics import root_mean_squared_error, r2_score, mean_squared_error, mean_absolute_error
+from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 
 
 @click.command()
-@click.option('--model-from', type = str)
-@click.option('--data-from', type = str)
-@click.option('--figures-to', type=str)
-@click.option('--tables-to', type=str)
+@click.option('--model-from', default="results/models", help="Directory containing preprocessor")
+@click.option('--data-from', default="data/processed", help="Directory containing processed data")
+@click.option('--figures-to', default="results/figures", help="Directory to output figures to")
+@click.option('--tables-to', default="results/tables", help="Directory to output tables to")
 
 def main(model_from, data_from, figures_to, tables_to):
     set_config(transform_output="pandas")
@@ -32,7 +32,7 @@ def main(model_from, data_from, figures_to, tables_to):
     formula = "quality ~ " + " + ".join(predictor_cols)
     model_ols = smf.ols(formula, data=train_df)
     results = model_ols.fit()
-    with open(os.path.join(tables_to, "ols_summary.html"), "w") as f:
+    with open(os.path.join(figures_to, "ols_summary.html"), "w") as f:
         f.write(results.summary().as_html())
  
     # Saving metrics to refer to in qmd   
