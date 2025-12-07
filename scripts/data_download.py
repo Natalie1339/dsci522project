@@ -1,6 +1,7 @@
 import pandas
 import os
 import click
+import os
 from ucimlrepo import fetch_ucirepo 
 
 @click.command()

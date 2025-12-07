@@ -3,8 +3,9 @@ all: data/raw/winequality-white.csv data/processed/X_train.csv data/processed/tr
 results:
 	mkdir -p results
 
-results/winequality-white.csv: scripts/data_download.py | results
-	python scripts/data_download.py --write-to=results/
+data/raw/winequality-white.csv: scripts/data_download.py | results
+	mkdir -p data/raw
+	python scripts/data_download.py --write-to=data/raw
 
 data/processed/X_train.csv data/processed/train_df.csv: scripts/data_processing.py data/raw/winequality-white.csv
 	mkdir -p data/processed
