@@ -1,0 +1,6 @@
+Metric,Value
+RMSE,0.7357
+MAE,0.5718
+R²,0.309
+Mean Actual,5.8776
+Mean Predicted,5.8667
