@@ -10,7 +10,7 @@ import os
 # plotting a bar graph for each variable
 def EDA(input_x_train_path, output_feature_dist_img_path):
     X_train=pd.read_csv(input_x_train_path)
-    for feat in X_train.columns.tolist()[1:-1]:
+    for feat in X_train.columns.tolist():
         plt.figure()
         plt.hist(X_train[feat], bins = 20, edgecolor='black')
         plt.xlabel(feat)

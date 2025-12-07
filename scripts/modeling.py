@@ -16,7 +16,7 @@ from sklearn.metrics import root_mean_squared_error, r2_score, mean_squared_erro
 @click.option('--figures-to', type=str)
 @click.option('--tables-to', type=str)
 
-def main(model_from, data_from, results_to, figures_to, tables_to):
+def main(model_from, data_from, figures_to, tables_to):
     set_config(transform_output="pandas")
 
     # read in the data
@@ -32,7 +32,7 @@ def main(model_from, data_from, results_to, figures_to, tables_to):
     formula = "quality ~ " + " + ".join(predictor_cols)
     model_ols = smf.ols(formula, data=train_df)
     results = model_ols.fit()
-    with open(os.path.join(figures_to, "ols_summary.html"), "w") as f:
+    with open(os.path.join(tables_to, "ols_summary.html"), "w") as f:
         f.write(results.summary().as_html())
  
     # Saving metrics to refer to in qmd   
