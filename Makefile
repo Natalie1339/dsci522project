@@ -4,7 +4,7 @@ results:
 	mkdir -p results
 
 results/winequality-white.csv: scripts/data_download.py | results
-	python scripts/data_download.py
+	python scripts/data_download.py --write-to=results/
 
 results/X_train.csv: scripts/data_processing.py results/winequality-white.csv
 	python scripts/data_processing.py --raw-data=results/ --data-to=results/
@@ -17,8 +17,8 @@ results/tables/: scripts/modeling.py results/train_df.csv results/test_df.csv
 	mkdir -p results/tables/
 	python scripts/modeling.py --model-to=results/ --data-from=results/ --figures-to=results/figures/ --tables-to=results/tables/
 
-report/wine_quality_predictor_report.html: report/wine_quality_predictor_report.qmd
-	quarto render report/wine_quality_predictor_report.qmd
+report/wine_quality_predictor_report.html: report/wine_quality_predictor_report.qmd results/figures/ results/tables/
+	quarto render report/wine_quality_predictor_report.qmd --to html
 
 clean:
 	rm -rf results/
