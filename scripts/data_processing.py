@@ -9,18 +9,14 @@ from deepchecks.tabular import Dataset
 from deepchecks.tabular.checks import FeatureLabelCorrelation
 
 from sklearn import set_config
-from sklearn.pipeline import Pipeline
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import RidgeCV
 
 @click.command()
 @click.option('--raw-data', default="data/raw", help="Directory containing raw data")
 @click.option('--data-to', default="data/processed", help="Directory to place processed data in")
-@click.option('--preprocessor-to', default="results/models", help="Directory to output preprocessor to")
 @click.option('--seed', type=int, default=123)
 
-def main(raw_data, data_to, preprocessor_to, seed):
+def main(raw_data, data_to, seed):
     np.random.seed(seed)
     set_config(transform_output="pandas")
 
@@ -90,15 +86,6 @@ def main(raw_data, data_to, preprocessor_to, seed):
     y_train.to_csv(os.path.join(data_to, "y_train.csv"), index=False)
     X_test.to_csv(os.path.join(data_to, "X_test.csv"), index=False)
     y_test.to_csv(os.path.join(data_to, "y_test.csv"), index=False)
-
-    model = Pipeline(
-        steps=[
-            ("scaler", StandardScaler()),
-            ("regressor", RidgeCV())
-        ]
-    )
-
-    pickle.dump(model, open(os.path.join(preprocessor_to, "model.pickle"), "wb"))
 
 if __name__ == '__main__':
     main()

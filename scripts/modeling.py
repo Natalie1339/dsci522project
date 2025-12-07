@@ -8,15 +8,17 @@ import seaborn as sns
 import statsmodels.formula.api as smf
 from sklearn import set_config
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import RidgeCV
 
 
 @click.command()
-@click.option('--model-from', default="results/models", help="Directory containing preprocessor")
 @click.option('--data-from', default="data/processed", help="Directory containing processed data")
 @click.option('--figures-to', default="results/figures", help="Directory to output figures to")
 @click.option('--tables-to', default="results/tables", help="Directory to output tables to")
 
-def main(model_from, data_from, figures_to, tables_to):
+def main(data_from, figures_to, tables_to):
     set_config(transform_output="pandas")
 
     # read in the data
@@ -43,10 +45,14 @@ def main(model_from, data_from, figures_to, tables_to):
     })
     ols_metrics.to_csv(os.path.join(tables_to, "ols_metrics.csv"), index=False)
 
-    # open model from data_processing script
-    model_path = os.path.join(model_from, "model.pickle")
-    with open(model_path, "rb") as f:
-        model = pickle.load(f)
+    # create model
+    model = Pipeline(
+        steps=[
+            ("scaler", StandardScaler()),
+            ("regressor", RidgeCV())
+        ]
+    )
+
     # fit the model
     model.fit(X_train, y_train)
     # use the model to predict on the testing data
