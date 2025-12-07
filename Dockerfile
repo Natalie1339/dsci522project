@@ -1,6 +1,9 @@
 # Use Miniforge3 as a minimal Conda base image
 FROM condaforge/miniforge3:latest
 
+# install for make command
+RUN apt-get update && apt-get install -y make && rm -rf /var/lib/apt/lists/*
+
 # Set working directory
 WORKDIR /workplace
 
