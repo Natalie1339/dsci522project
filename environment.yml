@@ -21,7 +21,9 @@ dependencies:
   - nb_conda_kernels
   - pip
   - polars
-  - quarto=1.8.26
+  - quarto=1.5.57
+  - vl-convert-python=1.1
+  - tabulate
   - pip:
       - altair-ally
       - pointblank

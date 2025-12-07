@@ -1,0 +1,12 @@
+feature,coefficient
+residual_sugar,0.3865
+alcohol,0.2668
+pH,0.0942
+sulphates,0.0637
+free_sulfur_dioxide,0.0547
+fixed_acidity,0.0426
+citric_acid,0.0048
+chlorides,0.0
+total_sulfur_dioxide,-0.0137
+volatile_acidity,-0.193
+density,-0.3967
