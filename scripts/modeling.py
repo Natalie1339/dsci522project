@@ -11,6 +11,7 @@ from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import RidgeCV
+from src.regression_metrics import regression_metrics
 
 
 @click.command()
@@ -60,19 +61,8 @@ def main(data_from, figures_to, tables_to, model_to):
     # use the model to predict on the testing data
     y_pred = model.predict(X_test)
     
-    # Calculate metrics
-    summary = pd.DataFrame({
-        'Metric': ['RMSE', 'MAE', 'R²', 'Mean Actual', 'Mean Predicted'],
-        'Value': [
-            np.sqrt(mean_squared_error(y_test, y_pred)),
-            mean_absolute_error(y_test, y_pred),
-            r2_score(y_test, y_pred),
-            y_test.mean(),
-            y_pred.mean()
-        ]
-    })
-    # Round for cleaner display
-    summary['Value'] = summary['Value'].round(4)
+    # MILESTONE FUNCTION Calculate metrics
+    summary = regression_metrics(y_test, y_pred)
     print(summary.to_string(index=False))
     # save ridge metrics
     summary.to_csv(os.path.join(tables_to, "ridge_metrics.csv"), index=False)
