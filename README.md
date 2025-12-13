@@ -28,7 +28,18 @@ The terminal should output a url starting with `http://127.0.0.1:8888/lab?token=
 - `conda-lock` (version 2.5.7 or higher)
 - `jupyterlab` (version 4.0.0 or higher)
 - `nb_conda_kernels` (version 2.3.1 or higher)
-- Python and packages listed in [`environment.yaml`](environment.yaml)
+- Python and packages listed in [`environment.yml`](environment.yml)
+
+## Scripts
+
+The following scripts are used to carry out the entirety of the analysis and can be found in the scripts/src directory:
+
+| Script | Utility |
+| --- | --- |
+| data_download.py | Downloads and filters for white wine data using the ucimlrepo python package. Saves as csv file to data/raw directory |
+| data_processing.py | Performs data validation checks using pointblank python package. Creates train test splits of data and saves them to data/processed directory in csv format|
+| EDA.py | Plots a bar graph for each feature and show a correlation graph. Saves each plot to results/figures directory |
+| modeling.py | Creates and fits ridge regression model to the training data. Saves model to results/model directory. Reports performance metrics and coefficients and saves them in results/tables directory |
 
 ## License
 
