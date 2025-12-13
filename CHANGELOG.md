@@ -16,3 +16,7 @@ Link to commit: <https://github.com/Natalie1339/dsci522project/pull/71/commits/9
 - edit the rendering of the results tables to standardize the tables
 
 
+## 2025-12-13
+Link to issue: <https://github.com/Natalie1339/dsci522project/issues/64>
+Link to commit: <https://github.com/Natalie1339/dsci522project/pull/74/commits/69d606ebb9c021fa0c64fee7c9070b14f61ca1c5>
+- Added docstring and comments to validation checks in data_processing.py
