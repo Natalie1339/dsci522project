@@ -20,3 +20,6 @@ Link to commit: <https://github.com/Natalie1339/dsci522project/pull/71/commits/9
 Link to issue: <https://github.com/Natalie1339/dsci522project/issues/64>
 Link to commit: <https://github.com/Natalie1339/dsci522project/pull/74/commits/69d606ebb9c021fa0c64fee7c9070b14f61ca1c5>
 - Added docstring and comments to validation checks in data_processing.py
+Link to issue: <https://github.com/UBC-MDS/data-analysis-review-2025/issues/47>
+Link to commit: <https://github.com/Natalie1339/dsci522project/commit/9617191bff31e100b009e4965a4689882172a1c2>
+- edit cv description to report qmd
