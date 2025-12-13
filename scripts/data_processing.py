@@ -1,6 +1,5 @@
 import click
 import os
-import pickle
 import numpy as np
 import pandas as pd
 import pointblank as pb
@@ -10,6 +9,7 @@ from deepchecks.tabular.checks import FeatureLabelCorrelation
 
 from sklearn import set_config
 from sklearn.model_selection import train_test_split
+from src.split_and_save import split_and_save
 
 @click.command()
 @click.option('--raw-data', default="data/raw", help="Directory containing raw data")
@@ -48,6 +48,8 @@ def main(raw_data, data_to, seed):
                                 ('alcohol', 'float64'),
                                 ('quality', 'int64')])
 
+    # Validate that all columns exist, do not contain null values,
+    # datatypes match the schema, and all rows in the table are distinct
     (pb.Validate(origin_df)
      .col_exists(columns=expected_cols)
      .col_vals_not_null(columns=expected_cols, thresholds=0.0)
@@ -57,15 +59,17 @@ def main(raw_data, data_to, seed):
 
     wine_quality_ds = Dataset(origin_df, label="quality", cat_features=[])
 
+    # Checks that features in the dataset are not excessively correlated with the target variable
     check_feat_lab_corr = FeatureLabelCorrelation().add_condition_feature_pps_less_than(0.9)
     check_feat_lab_corr_result = check_feat_lab_corr.run(dataset=wine_quality_ds)
 
     if not check_feat_lab_corr_result.passed_conditions():
         raise ValueError("Feature-Label correlation exceeds the maximum acceptable threshold.")
 
+    # Ensures all values in the target column fall within the expected range
     pb.Validate(origin_df).col_vals_between(columns="quality", left=0, right=10).interrogate()
 
-    # split the dataset into train and test sets
+    # Split the dataset into training and testing sets
     train_df, test_df = train_test_split(
         origin_df,
         test_size=0.25,
@@ -76,16 +80,8 @@ def main(raw_data, data_to, seed):
     train_df.to_csv(os.path.join(data_to, "train_df.csv"), index=False)
     test_df.to_csv(os.path.join(data_to, "test_df.csv"), index=False)
 
-    # separate the features and target
-    X_train = train_df.drop(columns="quality")
-    y_train = train_df["quality"]
-    X_test = test_df.drop(columns="quality")
-    y_test = test_df["quality"]
-
-    X_train.to_csv(os.path.join(data_to, "X_train.csv"), index=False)
-    y_train.to_csv(os.path.join(data_to, "y_train.csv"), index=False)
-    X_test.to_csv(os.path.join(data_to, "X_test.csv"), index=False)
-    y_test.to_csv(os.path.join(data_to, "y_test.csv"), index=False)
+    # Separate the features and target
+    split_and_save(train_df, test_df, "quality", data_to)
 
 if __name__ == '__main__':
     main()
