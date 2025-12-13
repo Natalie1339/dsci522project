@@ -22,3 +22,8 @@ Link to commit: <https://github.com/Natalie1339/dsci522project/pull/71/commits/9
 - Link to issue: <https://github.com/Natalie1339/dsci522project/issues/78>
 - Link to commit: <https://github.com/Natalie1339/dsci522project/pull/72/commits/57a8026e5e4f341a4666369c280a1a258e7492c1>
 - add descriptions to readme for each script
+
+## 2025-12-13
+Link to issue: <https://github.com/Natalie1339/dsci522project/issues/64>
+Link to commit: <https://github.com/Natalie1339/dsci522project/pull/74/commits/69d606ebb9c021fa0c64fee7c9070b14f61ca1c5>
+- Added docstring and comments to validation checks in data_processing.py
