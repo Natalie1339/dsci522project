@@ -43,7 +43,7 @@ The following scripts are used to carry out the entirety of the analysis and can
 
 ## License
 
-If re-using/re-mixing please provide attribution and link to this webpage. The software code contained within this repository is licensed under the MIT license. See [the license file](LICENSE.md) for more information.
+If re-using/re-mixing please provide attribution and link to this webpage. The software code contained within this repository is licensed under the MIT license. See [the license file](LICENSE) for more information.
 
 ## References
 
