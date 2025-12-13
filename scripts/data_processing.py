@@ -33,7 +33,7 @@ def main(raw_data, data_to, seed):
                      'alcohol',
                      'quality']
   
-    origin_df = pd.read_csv(os.path.join(raw_data, "winequality-white.csv"), sep=',', encoding='utf-8',index_col=0).drop(columns=['color'])
+    origin_df = pd.read_csv(os.path.join(raw_data, "winequality-white.csv"), sep=',', encoding='utf-8').drop(columns=['color'])
 
     schema = pb.Schema(columns=[('fixed_acidity', 'float64'),
                                 ('volatile_acidity', 'float64'),
