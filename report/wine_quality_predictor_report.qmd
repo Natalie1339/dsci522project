@@ -81,7 +81,7 @@ ols_metrics = pd.read_csv("../results/tables/ols_metrics.csv")
 print(ols_metrics.to_markdown(index=False))
 ```
 
-This model (@tbl-ols-results) has an R-squared value of `{python} f"{r2_ols:.3f}"`, meaning that the model explains roughly `{python} f"{r2_ols:.1%}"` of variability in the data. The R-squared value is close to that of the adjusted R-squared, suggesting most predictors contribute explanatory power to the model. The p-value of the F-statistics is small, indicating that at least one predictor has a statistically significant assocation with the response. The output reveals that the condition number of the model is large, possibly indicating strong multicollinearity. Thus, we will opt for a Ridge Regression to induce an L2 penalty on correlated variables.
+This model (@tbl-ols-results) has an R-squared value of `{python} f"{r2_ols:.3f}"`, meaning that the model explains roughly `{python} f"{r2_ols:.1%}"` of variability in the data. The R-squared value is close to that of the adjusted R-squared, suggesting most predictors contribute explanatory power to the model. The p-value of the F-statistics is small, indicating that at least one predictor has a statistically significant assocation with the response. The output reveals that the condition number of the model is large, possibly indicating strong multicollinearity. Thus, we will opt for a Ridge Regression to induce an L2 penalty on correlated variables with RidgeCV() for cross-validation.
 
 ::: {#tbl-ridge-results layout-ncol=2}
 ```{python}
