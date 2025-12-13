@@ -19,7 +19,7 @@ editor: source
 
 Quality assessment is an essential step in the wine making process as it helps ensure consistency and consumer satisfaction. The quality of wine has historically been evaluated by wine makers and sommeliers, who leverage their training and expertise to determine if a product meets acceptable standards @langstaff2010sensory. While there have been advancements in the detection of the physicochemical properties of wine and how they relate to flavour @polavskova2008wine, quality assessment remains a subjective metric.
 
-Here we ask if wine quality can be predicted using machine learning. Specifically the question we aim to address is: can linear modeling be useds to adequately predict wine quality based solely on physiochemical properties? Our focus is to create an interpretable ridge regression model to perform this task. The utility of such a model is two-fold as it can be used as a tool to help less experienced wine makers and sommeliers get a sense of the quality of a given wine. Furthermore, the model would help to provide a more objective framework for wine assessment through interpretation of its coefficients. To achieve this, we will train our model on data related to vinho verde white wines from the Minho region of Portugal which contains the physicochemical and sensory data of 4898 wines @cortez2009modeling.
+Here we ask if wine quality can be predicted using machine learning. Specifically the question we aim to address is: can linear modeling be used to adequately predict wine quality based solely on physiochemical properties? Our focus is to create an interpretable ridge regression model to perform this task. The utility of such a model is two-fold as it can be used as a tool to help less experienced wine makers and sommeliers get a sense of the quality of a given wine. Furthermore, the model would help to provide a more objective framework for wine assessment through interpretation of its coefficients. To achieve this, we will train our model on data related to vinho verde white wines from the Minho region of Portugal which contains the physicochemical and sensory data of 4898 wines @cortez2009modeling.
 
 # Methods
 
@@ -28,6 +28,8 @@ Here we ask if wine quality can be predicted using machine learning. Specificall
 The data was obtained from the UC Irvine Machine Learning Repository @Dua2019. The dataset contains physicochemical and sensory data related to 4898 white wines @cortez2009modeling. The physicochemical data include: fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, alcohol, and sulfates. These physicochemical data are emperically measured and will be used as features for our predictive model. The sensory data contained in the data set refers to the quality of the wine, which was subjectively measured by wine experts and represented as a score out of ten. This will be the target of our predictive model.
 
 The distributions of the features can be seen in @fig-feature-dist. By taking a look at the individual distributions of the variables, we can see that the majority of them are approximately normal with some degree of right-skew. This tells us that most of the values tend to cluster around the average, possibly an industry standard, with the more extreme values tending to fall above the average rather than below it. The distributions of residual sugar and alcohol content break this pattern as the residual sugar plot follows a more exponential pattern, and the distribution of alcohol content is still approximately normal but also shows a tendency towards uniformity.
+
+Physicochemical Feature Distributions and Feature Correlation
 
 ::: {#fig-feature-dist layout-ncol=3}
 
@@ -53,10 +55,10 @@ The distributions of the features can be seen in @fig-feature-dist. By taking a 
 
 ![Sulphates](../results/figures/feature_sulphates_dist.png){#fig-sulphates}
 
+:::
+
 ![Correlation](../results/figures/correlation_plot.png){#fig-correlation}
 
-Physicochemical Feature Distributions and Feature Correlation
-:::
 
 ## Analysis
 
@@ -78,7 +80,7 @@ For exploratory purposes, we first create an ordinary least squares linear regre
 #| tbl-cap: "OLS Regression Metrics"
 import pandas as pd
 ols_metrics = pd.read_csv("../results/tables/ols_metrics.csv")
-print(ols_metrics.to_markdown(index=False))
+ols_metrics
 ```
 
 This model (@tbl-ols-results) has an R-squared value of `{python} f"{r2_ols:.3f}"`, meaning that the model explains roughly `{python} f"{r2_ols:.1%}"` of variability in the data. The R-squared value is close to that of the adjusted R-squared, suggesting most predictors contribute explanatory power to the model. The p-value of the F-statistics is small, indicating that at least one predictor has a statistically significant assocation with the response. The output reveals that the condition number of the model is large, possibly indicating strong multicollinearity. Thus, we will opt for a Ridge Regression to induce an L2 penalty on correlated variables.
@@ -90,7 +92,7 @@ This model (@tbl-ols-results) has an R-squared value of `{python} f"{r2_ols:.3f}
 #| tbl-cap: "Ridge Features and Coefficients"
 import pandas as pd
 coef = pd.read_csv("../results/tables/ridge_coefficients.csv")
-print(coef.to_markdown(index=False))
+coef
 ```
 ```{python}
 #| echo: false
@@ -98,7 +100,7 @@ print(coef.to_markdown(index=False))
 #| tbl-cap: "Ridge Regression Results"
 import pandas as pd
 metrics = pd.read_csv("../results/tables/ridge_metrics.csv")
-print(metrics.to_markdown(index=False))
+metrics
 ```
 
 Ridge Regression Analysis Results
