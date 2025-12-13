@@ -5,7 +5,7 @@ from typing import Tuple
 def split_and_save(train_df, test_df, target_col, output_dir) -> Tuple[str, str, str, str]:
     """
     Splits training and testing datasets into feature and target sets by a specified column,
-    and exports each to the specified directory as .csv files.
+    and exports each to the specified directory as CSV files.
 
     Parameters
     ----------
@@ -16,12 +16,12 @@ def split_and_save(train_df, test_df, target_col, output_dir) -> Tuple[str, str,
     target_col : str
         Name of the column to split by.
     output_dir : str
-        Path to the directory where the resulting .csv files are saved.
+        Path to the directory where the resulting CSV files are saved.
 
     Returns
     -------
     tuple (str)
-        Tuple containing the file paths of the saved .csv files:
+        Tuple containing the file paths of the saved CSV files:
         (X_train_path, y_train_path, X_test_path, y_test_path)
 
     Raises
