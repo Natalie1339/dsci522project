@@ -28,11 +28,11 @@ The terminal should output a url starting with `http://127.0.0.1:8888/lab?token=
 - `conda-lock` (version 2.5.7 or higher)
 - `jupyterlab` (version 4.0.0 or higher)
 - `nb_conda_kernels` (version 2.3.1 or higher)
-- Python and packages listed in [`environment.yaml`](environment.yaml)
+- Python and packages listed in [`environment.yml`](environment.yml)
 
 ## License
 
-If re-using/re-mixing please provide attribution and link to this webpage. The software code contained within this repository is licensed under the MIT license. See [the license file](LICENSE.md) for more information.
+If re-using/re-mixing please provide attribution and link to this webpage. The software code contained within this repository is licensed under the MIT license. See [the license file](LICENSE) for more information.
 
 ## References
 
